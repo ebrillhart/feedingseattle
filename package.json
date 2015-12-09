@@ -1,0 +1,28 @@
+{
+  "name": "airplanes",
+  "version": "1.0.0",
+  "description": "Uses Socrata OpenData to display a list and map of meal programs for homeless and low-income individuals. Registered users can create a list of saved/favorite programs.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^0.8.5",
+    "body-parser": "^1.14.1",
+    "express": "^4.13.3",
+    "express-jwt": "^3.3.0",
+    "jsonwebtoken": "^5.4.1",
+    "mongoose": "^4.2.9"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ebrillhart/feedingseattle.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ebrillhart/feedingseattle/issues"
+  },
+  "homepage": "https://github.com/ebrillhart/feedingseattle#readme"
+}
