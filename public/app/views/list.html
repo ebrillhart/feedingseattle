@@ -1,0 +1,34 @@
+<h1>List of Meals</h1>
+
+<h3>Breakfast</h3>
+<div class="well" ng-repeat="meal in breakfast">
+	<h4>{{ meal.name_of_program }}</h4>
+	<h5>{{ meal.day_time }}</h5>
+	<h5>{{ meal.location }}</h5>
+	<h5>{{ meal.people_served }}</h5>
+</div>
+
+<h3>Lunch</h3>
+<div class="well" ng-repeat="meal in lunch">
+	<h4>{{ meal.name_of_program }}</h4>
+	<h5>{{ meal.day_time }}</h5>
+	<h5>{{ meal.location }}</h5>
+	<h5>{{ meal.people_served }}</h5>
+</div>
+
+<h3>Dinner</h3>
+<div class="well" ng-repeat="meal in dinner">
+	<h4>{{ meal.name_of_program }}</h4>
+	<h5>{{ meal.day_time }}</h5>
+	<h5>{{ meal.location }}</h5>
+	<h5>{{ meal.people_served }}</h5>
+</div>
+
+<h3>Other</h3>
+<div class="well" ng-repeat="meal in otherMeals">
+	<h4>{{ meal.name_of_program }}</h4>
+	<h5>{{ meal.day_time }}</h5>
+	<h5>{{ meal.location }}</h5>
+	<h5>{{ meal.meal_served }}</h5>
+	<h5>{{ meal.people_served }}</h5>
+</div>

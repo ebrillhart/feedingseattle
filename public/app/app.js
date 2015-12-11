@@ -9,8 +9,8 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
         templateUrl: "app/views/map.html",
         controller: 'MapCtrl'
     }).when("/list", {
-        templateUrl: "app/views/map.html",
-        controller: 'ListCtrl'
+        templateUrl: "app/views/list.html",
+        controller: 'MealCtrl'
     }).when("/user/favorites", {
         templateUrl: "app/views/favorites.html",
         controller: 'UserCtrl'
@@ -24,8 +24,15 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
         templateUrl: "app/views/404.html"
     });
     $locationProvider.html5Mode(true);
-}]).config(['$httpProvider', function($httpProvider) {
+}]).config(["$httpProvider", function($httpProvider){
+    $httpProvider.defaults.headers.common = {};
+    $httpProvider.defaults.headers.post = {};
+    $httpProvider.defaults.headers.put = {};
+    $httpProvider.defaults.headers.patch = {};
+
+
     $httpProvider.interceptors.push('AuthInterceptor');
+    // $httpProvider.defaults.headers.common.Authorization = 'Bearer ' + Auth.getAuthToken();
 }]).run(["$rootScope", "Auth", function($rootScope, Auth) {
     $rootScope.isLoggedIn = function() {
         return Auth.isLoggedIn.apply(Auth);
