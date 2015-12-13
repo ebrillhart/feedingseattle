@@ -24,18 +24,18 @@
 <h3 class="foodHeader">Breakfast</h3>
 	<uib-accordion close-others="oneAtATime">
 	<!-- accordian header -->
-	<uib-accordion-group heading="{{meal.name_of_program}}, {{meal.people_served}}" ng-repeat="meal in breakfast" class="accordianHeading">
+	<uib-accordion-group heading="{{meal.name_of_program}}, {{meal.people_served}}" ng-repeat="meal in breakfast" class="accordianHeading center-block">
 	<!-- accordian body -->
 		<div class="row">
 		    <div class="col-md-6">
 		        <h5>{{meal.day_time}}</h5>
 		        <h5>{{meal.location}}, WA</h5>
-		        <button class="btn btn-default">Add to Favorites</button>
+		        <button class="btn btn-default faveButton">Add to Favorites</button>
 		    </div>
 		    <!-- location map -->
 		    <div class="col-md-6">
-		        <ng-map id="map" zoom="11">
-		    		<marker position="{{ meal.location }}" centered="true"></marker>
+		        <ng-map id="map" zoom="11" center="[47.66, -122.50]">
+		    		<marker position="{{ meal.location }}"></marker>
 		    	</ng-map>
 			</div>
 		</div>
@@ -49,17 +49,18 @@
 <h3 class="foodHeader">Lunch</h3>
 <uib-accordion close-others="oneAtATime">
 <!-- accordian header -->
-<uib-accordion-group heading="{{meal.name_of_program}}, {{meal.people_served}}" ng-repeat="meal in lunch" class="accordianHeading">
+<uib-accordion-group heading="{{meal.name_of_program}}, {{meal.people_served}}" ng-repeat="meal in lunch" class="accordianHeading center-block">
 	<!-- accordian body -->
 	<div class="row">
 		<div class="col-md-6">
 		    <h5>{{meal.day_time}}</h5>
 		    <h5>{{meal.location}}, WA</h5>
+		    <button class="btn btn-default faveButton">Add to Favorites</button>
 		</div>
 		<!-- location map -->
 		<div class="col-md-6">
-		    <ng-map id="map" zoom="11">
-				<marker position="{{ meal.location }}" centered="true"></marker>
+		    <ng-map id="map" zoom="11" center="[47.66, -122.50]">
+				<marker position="{{ meal.location }}"></marker>
 			</ng-map>
 		</div>
 	</div>
@@ -73,17 +74,18 @@
 <h3 class="foodHeader">Dinner</h3>
 <uib-accordion close-others="oneAtATime">
 <!-- accordian header -->
-<uib-accordion-group heading="{{meal.name_of_program}}, {{meal.people_served}}" ng-repeat="meal in dinner" class="accordianHeading">
+<uib-accordion-group heading="{{meal.name_of_program}}, {{meal.people_served}}" ng-repeat="meal in dinner" class="accordianHeading center-block">
 	<!-- accordian body -->
 	<div class="row">
 		<div class="col-md-6">
 			<h5>{{meal.day_time}}</h5>
 			<h5>{{meal.location}}, WA</h5>
+			<button class="btn btn-default faveButton">Add to Favorites</button>
 		</div>
 		<!-- location map -->
 		<div class="col-md-6">
-			<ng-map id="map" zoom="11">
-				<marker position="{{ meal.location }}" centered="true"></marker>
+			<ng-map id="map" zoom="11" center="[47.66, -122.50]">
+				<marker position="{{ meal.location }}"></marker>
 			</ng-map>
 		</div>
 	</div>
@@ -97,17 +99,18 @@
 <h3 class="foodHeader">Other</h3>
 <uib-accordion close-others="oneAtATime">
 <!-- accordian header -->
-<uib-accordion-group heading="{{meal.name_of_program}}, {{meal.people_served}}" ng-repeat="meal in otherMeals" class="accordianHeading">
+<uib-accordion-group heading="{{meal.name_of_program}}, {{meal.people_served}}" ng-repeat="meal in otherMeals" class="accordianHeading center-block">
 	<!-- accordian body -->
 	<div class="row">
 	    <div class="col-md-6">
 	    	<h5>{{meal.day_time}}</h5>
 	        <h5>{{meal.location}}, WA</h5>
+	        <button class="btn btn-default faveButton">Add to Favorites</button>
 	    </div>
 	    <!-- location map -->
 	    <div class="col-md-6">
-	        <ng-map id="map" zoom="11">
-	    		<marker position="{{ meal.location }}" centered="true"></marker>
+	        <ng-map id="map" zoom="11" center="[47.66, -122.50]">
+	    		<marker position="{{ meal.location }}"></marker>
 	    	</ng-map>
 		</div>
 	</div>
