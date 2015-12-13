@@ -1,13 +1,10 @@
-var app = angular.module("FeedingSeattle", ['MealsServices', 'MealsCtrls', 'ngRoute']);
+var app = angular.module("FeedingSeattle", ['MealsServices', 'MealsCtrls', 'ngRoute', 'ui.bootstrap']);
 app.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
     //define routes
     $routeProvider.when('/', {
         templateUrl: "app/views/splash.html",
     }).when('/about', {
         templateUrl: "app/views/about.html"
-    }).when("/map", {
-        templateUrl: "app/views/map.html",
-        controller: 'MapCtrl'
     }).when("/list", {
         templateUrl: "app/views/list.html",
         controller: 'MealCtrl'
@@ -37,4 +34,8 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
     $rootScope.isLoggedIn = function() {
         return Auth.isLoggedIn.apply(Auth);
     }
+    $rootScope.$on('mapInitialized', function(evt,map) {
+        $rootScope.mymap = map;
+        $rootScope.$apply();
+  });
 }]);

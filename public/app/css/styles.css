@@ -1,7 +1,68 @@
-#map {
-	height: 600px;
+/* full-site and navbar */
+body {
+    background: url(../images/spaceneedle.jpeg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    font-family: 'IM Fell French Canon', serif;
 }
 
-#mapDiv {
-	height: 100%;
+.navbar-default {
+	background-color: #232323;
+	border-color: #232323;
+	border-radius: 0px;
+	padding: 1%;
+}
+
+.navbar-default .navbar-nav>li>a, .navbar-default .navbar-brand, .navbar-default .navbar-nav>li>a:hover, .navbar-default .navbar-brand:hover, .navbar-default .navbar-nav>li>a:visited, .navbar-default .navbar-brand:visited {
+	color: #C9C9C9;
+}
+
+.navbar-default .navbar-nav>li>a {
+	font-size: 1.75rem;
+}
+
+.navbar-default .navbar-brand {
+	font-size: 2.5rem;
+}
+
+/* splash page */
+#titleDiv {
+	margin-top: 15%;
+}
+
+.titleMain {
+	font-size: 12rem;
+	margin-top: 0px;
+	font-weight: 900;
+	margin-bottom: 0px;
+	padding: 0px;
+	color: #232323;
+}
+
+.titleSmall {
+	margin-top: 0px;
+	margin-bottom: 0px;
+	padding: 0px;
+}
+
+.titleSmall small {
+	color: #7F7F7F;
+}
+
+/* List Page */
+#listDiv {
+	background-color: rgba(255, 255, 255, 0.5);
+	padding: 5%;
+	margin-bottom: 5%;
+}
+
+#map {
+    height: 300px;
+    width: 100%;
+}
+
+#filterRow {
+	margin-bottom: 5%;
 }

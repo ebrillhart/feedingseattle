@@ -1,16 +1,10 @@
-angular.module('MealsCtrls', ['MealsServices', 'ngMap']).controller('MealCtrl', ['$scope', 'Meal', function($scope, Meal) {
-    // setting up the meal controller - manages sorting and searching on the list page
-    $scope.meals = [];
-    $scope.resultMeals = [];
-    $scope.breakfast = [];
-    $scope.lunch = [];
-    $scope.dinner = [];
-    $scope.otherMeals = [];
-    Meal.query(function success(data) {
-        $scope.meals = data;
-        $scope.resultMeals = data;
-        // sorting the meals into separate display arrays depending on type of meal
-        $scope.meals.forEach(function(meal) {
+angular.module('MealsCtrls', ['MealsServices', 'ngMap', 'ui.bootstrap']).controller('MealCtrl', ['$scope', 'NgMap', 'Meal', function($scope, NgMap, Meal) {
+    // *********************************************************
+    // meal controller for meals list page and all functionality
+    // *********************************************************
+    // function to be used as callback - filters meals into meal arrays
+    var mealType = function(arr) {
+        arr.forEach(function(meal) {
             if (meal.meal_served == "Breakfast" || meal.name_of_program == "Chief Seattle Club") {
                 $scope.breakfast.push(meal);
             } else if (meal.meal_served == "Lunch") {
@@ -21,47 +15,70 @@ angular.module('MealsCtrls', ['MealsServices', 'ngMap']).controller('MealCtrl', 
                 $scope.otherMeals.push(meal);
             }
         });
+    };
+    // initializing map with NgMap
+    NgMap.getMap().then(function(map) {});
+    // setting up the meal controller - manages sorting and searching on the list page
+    $scope.resultMeals = [];
+    $scope.breakfast = [];
+    $scope.lunch = [];
+    $scope.dinner = [];
+    $scope.otherMeals = [];
+    Meal.query(function success(data) {
+        $scope.resultMeals = data;
+        // sorting the meals into separate display arrays depending on type of meal
+        mealType($scope.resultMeals);
     }, function error(data) {
         console.log(data);
     });
-    // allowing users to filter meals based on a number of criteria
-    $scope.mealSearch = function(search) {
+    // show all meals filter
+    $scope.showAll = function() {
+        $scope.breakfast = [];
+        $scope.lunch = [];
+        $scope.dinner = [];
+        $scope.otherMeals = [];
+        mealType($scope.resultMeals);
+    };
+    // show meals open to all
+    $scope.openMealFilter = function() {
         var filteredMeals = [];
-        $scope.meals.forEach(function(meal) {
-            if (meal.manufacturer.toLowerCase().indexOf(search) > -1) {
+        $scope.breakfast = [];
+        $scope.lunch = [];
+        $scope.dinner = [];
+        $scope.otherMeals = [];
+        $scope.resultMeals.forEach(function(meal) {
+            if (meal.people_served.toLowerCase() == "open to all" || meal.people_served == "OPEN TO ALL /            Must be sober" || meal.people_served.toLowerCase() == "open to all ") {
                 filteredMeals.push(meal)
             }
         })
-        $scope.resultMeals = filteredMeals;
-    }
-}]).controller("MapCtrl", ["$scope", "$routeParams", 'NgMap', "Meal", function($scope, $routeParams, NgMap, Meal) {
-    NgMap.getMap().then(function(map) {
-        // manages displaying locations and searching on the map page
-        $scope.meals = [];
-        $scope.resultMeals = [];
-        Meal.query(function success(data) {
-            $scope.meals = data;
-            $scope.resultMeals = data;
-        }, function error(data) {
-            console.log(data);
-        });
-    });
-}]).controller("MealShowCtrl", ["$scope", "$routeParams", "Meal", function($scope, $routeParams, Meal) {
-    Meal.get({
-        id: $routeParams.id
-    }, function success(data) {
-        $scope.meal = data;
-    }, function error(data) {
-        console.log(data);
-    });
+        mealType(filteredMeals);
+    };
+    // show meals open to certain demographics
+    $scope.restrictedMealFilter = function() {
+        var filteredMeals = [];
+        $scope.breakfast = [];
+        $scope.lunch = [];
+        $scope.dinner = [];
+        $scope.otherMeals = [];
+        $scope.resultMeals.forEach(function(meal) {
+            if (meal.people_served.toLowerCase() != "open to all" && meal.people_served.toLowerCase() != "open to all ") {
+                filteredMeals.push(meal)
+            }
+        })
+        mealType(filteredMeals);
+    };
 }]).controller('NavCtrl', ['$scope', "Auth", function($scope, Auth) {
-    // manages functions on the navigation bar, including the log out function 
+    // ***********************************************************************
+    // manages functions on the navigation bar, including the log out function
+    // *********************************************************************** 
     $scope.logout = function() {
         Auth.removeToken();
         location.reload("/");
     };
 }]).controller("LoginCtrl", ["$scope", "$http", "$location", "Auth",
+    // *************************************************************
     // controller handling when an existing user logs in to the site
+    // *************************************************************
     function($scope, $http, $location, Auth) {
         $scope.user = {
             email: "",
@@ -78,7 +95,9 @@ angular.module('MealsCtrls', ['MealsServices', 'ngMap']).controller('MealCtrl', 
         };
     }
 ]).controller("SignupCtrl", ["$scope", "$http", "$location", "Auth",
+    // *********************************************************
     // controller handling when a new user signs up for the site
+    // *********************************************************
     function($scope, $http, $location, Auth) {
         $scope.user = {
             email: "",

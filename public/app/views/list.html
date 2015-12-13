@@ -1,34 +1,118 @@
-<h1>List of Meals</h1>
-
-<h3>Breakfast</h3>
-<div class="well" ng-repeat="meal in breakfast">
-	<h4>{{ meal.name_of_program }}</h4>
-	<h5>{{ meal.day_time }}</h5>
-	<h5>{{ meal.location }}</h5>
-	<h5>{{ meal.people_served }}</h5>
+<div id="listDiv">
+<!-- *************************** -->
+<!-- filters for search and jump -->
+<!-- *************************** -->
+<div class="row" id="filterRow">
+	<div class="col-md-6">
+		<h3 id="jump">Jump to: </h3>
+		<a href="#breakfast"><button class="btn btn-small jumpButton">Breakfast</button></a>
+		<a href="#lunch"><button class="btn btn-small jumpButton">Lunch</button></a>
+		<a href="#dinner"><button class="btn btn-small jumpButton">Dinner</button></a>
+		<a href="#other"><button class="btn btn-small jumpButton">Other</button></a>
+	</div>
+	<div class="col-md-6">
+		<h3 id="filter">Filter by: </h3>
+		<button class="btn btn-small filterButton" ng-click="openMealFilter()">Open to All</button>
+		<button class="btn btn-small filterButton" ng-click="restrictedMealFilter()">Restricted by Demographic</button>
+		<button class="btn btn-small filterButton" ng-click="showAll()">Show All Meals</button>
+	</div>
 </div>
-
-<h3>Lunch</h3>
-<div class="well" ng-repeat="meal in lunch">
-	<h4>{{ meal.name_of_program }}</h4>
-	<h5>{{ meal.day_time }}</h5>
-	<h5>{{ meal.location }}</h5>
-	<h5>{{ meal.people_served }}</h5>
+<!-- ************* -->
+<!-- breakfast div -->
+<!-- ************* -->
+<div class="row" id="breakfast">
+<h3 class="foodHeader">Breakfast</h3>
+	<uib-accordion close-others="oneAtATime">
+	<!-- accordian header -->
+	<uib-accordion-group heading="{{meal.name_of_program}}, {{meal.people_served}}" ng-repeat="meal in breakfast" class="accordianHeading">
+	<!-- accordian body -->
+		<div class="row">
+		    <div class="col-md-6">
+		        <h5>{{meal.day_time}}</h5>
+		        <h5>{{meal.location}}, WA</h5>
+		        <button class="btn btn-default">Add to Favorites</button>
+		    </div>
+		    <!-- location map -->
+		    <div class="col-md-6">
+		        <ng-map id="map" zoom="11">
+		    		<marker position="{{ meal.location }}" centered="true"></marker>
+		    	</ng-map>
+			</div>
+		</div>
+	</uib-accordion-group>
+	</uib-accordion>
 </div>
-
-<h3>Dinner</h3>
-<div class="well" ng-repeat="meal in dinner">
-	<h4>{{ meal.name_of_program }}</h4>
-	<h5>{{ meal.day_time }}</h5>
-	<h5>{{ meal.location }}</h5>
-	<h5>{{ meal.people_served }}</h5>
+<!-- ********* -->
+<!-- lunch div -->
+<!-- ********* -->
+<div class="row" id="lunch">
+<h3 class="foodHeader">Lunch</h3>
+<uib-accordion close-others="oneAtATime">
+<!-- accordian header -->
+<uib-accordion-group heading="{{meal.name_of_program}}, {{meal.people_served}}" ng-repeat="meal in lunch" class="accordianHeading">
+	<!-- accordian body -->
+	<div class="row">
+		<div class="col-md-6">
+		    <h5>{{meal.day_time}}</h5>
+		    <h5>{{meal.location}}, WA</h5>
+		</div>
+		<!-- location map -->
+		<div class="col-md-6">
+		    <ng-map id="map" zoom="11">
+				<marker position="{{ meal.location }}" centered="true"></marker>
+			</ng-map>
+		</div>
+	</div>
+</uib-accordion-group>
+</uib-accordion>
 </div>
-
-<h3>Other</h3>
-<div class="well" ng-repeat="meal in otherMeals">
-	<h4>{{ meal.name_of_program }}</h4>
-	<h5>{{ meal.day_time }}</h5>
-	<h5>{{ meal.location }}</h5>
-	<h5>{{ meal.meal_served }}</h5>
-	<h5>{{ meal.people_served }}</h5>
+<!-- ********** -->
+<!-- dinner div -->
+<!-- ********** -->
+<div class="row" id="dinner">
+<h3 class="foodHeader">Dinner</h3>
+<uib-accordion close-others="oneAtATime">
+<!-- accordian header -->
+<uib-accordion-group heading="{{meal.name_of_program}}, {{meal.people_served}}" ng-repeat="meal in dinner" class="accordianHeading">
+	<!-- accordian body -->
+	<div class="row">
+		<div class="col-md-6">
+			<h5>{{meal.day_time}}</h5>
+			<h5>{{meal.location}}, WA</h5>
+		</div>
+		<!-- location map -->
+		<div class="col-md-6">
+			<ng-map id="map" zoom="11">
+				<marker position="{{ meal.location }}" centered="true"></marker>
+			</ng-map>
+		</div>
+	</div>
+</uib-accordion-group>
+</uib-accordion>
+</div>
+<!-- ********* -->
+<!-- other div -->
+<!-- ********* -->
+<div class="row" id="other">
+<h3 class="foodHeader">Other</h3>
+<uib-accordion close-others="oneAtATime">
+<!-- accordian header -->
+<uib-accordion-group heading="{{meal.name_of_program}}, {{meal.people_served}}" ng-repeat="meal in otherMeals" class="accordianHeading">
+	<!-- accordian body -->
+	<div class="row">
+	    <div class="col-md-6">
+	    	<h5>{{meal.day_time}}</h5>
+	        <h5>{{meal.location}}, WA</h5>
+	    </div>
+	    <!-- location map -->
+	    <div class="col-md-6">
+	        <ng-map id="map" zoom="11">
+	    		<marker position="{{ meal.location }}" centered="true"></marker>
+	    	</ng-map>
+		</div>
+	</div>
+</uib-accordion-group>
+</uib-accordion>
+</div>
+<!-- end of list div -->
 </div>
