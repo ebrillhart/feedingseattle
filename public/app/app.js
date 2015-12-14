@@ -8,9 +8,9 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
     }).when("/list", {
         templateUrl: "app/views/list.html",
         controller: 'MealCtrl'
-    }).when("/user/favorites", {
+    }).when("/user/:id/profile", {
         templateUrl: "app/views/favorites.html",
-        controller: 'UserCtrl'
+        controller: 'MealCtrl'
     }).when('/login', {
         templateUrl: 'app/views/userLogin.html',
         controller: 'LoginCtrl'
@@ -21,12 +21,9 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
         templateUrl: "app/views/404.html"
     });
     $locationProvider.html5Mode(true);
-}]).run(["$rootScope", "Auth", function($rootScope, Auth) {
+}]).run(["$rootScope", "Auth", "User", function($rootScope, Auth, User) {
     $rootScope.isLoggedIn = function() {
         return Auth.isLoggedIn.apply(Auth);
-    }
-    $rootScope.$on('mapInitialized', function(evt,map) {
-        $rootScope.mymap = map;
-        $rootScope.$apply();
-  });
+    };
+    $rootScope.currentUser = Auth.currentUser();
 }]);

@@ -2,18 +2,24 @@ var mongoose = require('mongoose');
 var bcrypt   = require('bcrypt');
 
 var UserSchema = mongoose.Schema({
-  name: String,
   username: String,
   password: String,
-  favorites: Array
+  favorites: [
+    {
+      program: String,
+      location: String,
+      time: String,
+      meal: String,
+      served: String
+    }
+  ]
 });
 
 UserSchema.set('toJSON', {
   transform: function(doc, ret, options) {
     var returnJson = {
       id: ret._id,
-      username: ret.email,
-      name: ret.name,
+      username: ret.username,
       favorites: ret.favorites
     };
     return returnJson;

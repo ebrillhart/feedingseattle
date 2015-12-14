@@ -1,4 +1,4 @@
-angular.module('MealsCtrls', ['MealsServices', 'ngMap', 'ui.bootstrap']).controller('MealCtrl', ['$scope', 'NgMap', 'Meal', function($scope, NgMap, Meal) {
+angular.module('MealsCtrls', ['MealsServices', 'ngMap', 'ui.bootstrap']).controller('MealCtrl', ['$scope', 'NgMap', 'Meal', 'User', 'Favorites', function($scope, NgMap, Meal, User, Favorites) {
     // *********************************************************
     // meal controller for meals list page and all functionality
     // *********************************************************
@@ -71,13 +71,46 @@ angular.module('MealsCtrls', ['MealsServices', 'ngMap', 'ui.bootstrap']).control
         })
         mealType(filteredMeals);
     };
-}]).controller('NavCtrl', ['$scope', "Auth", function($scope, Auth) {
+    $scope.addToFavorites = function(index, whichMeal) {
+            // $scope.program = program;
+            // $scope.location = location;
+            // $scope.time = time;
+            // $scope.meal = meal;
+            // $scope.served = served;
+            var meal = $scope.whichMeal[index];
+            var favoritesObj = {
+                program: meal.program,
+                location: meal.location,
+                time: meal.time,
+                meal: meal.meal,
+                served: meal.served
+            };
+            console.log(favoritesObj);
+            Favorites.saveFavorites({
+                id: $scope.user.id
+            }, favoritesObj, function success(data) {
+                console.log("This is hitting" + data);
+                $scope.user.favorites.push(favoritesObj);
+            }, function error(data) {
+                console.log("Error" + data);
+            });
+            console.log($scope.user);
+        };
+    // function for adding meals to a user's favorites
+    User.get({
+        id: $scope.currentUser.id
+    }, function success(data) {
+        $scope.user = data; 
+    }, function error(data) {
+        console.log(data);
+    });
+}]).controller('NavCtrl', ['$scope', "Auth", "$location", function($scope, Auth, $location) {
     // ***********************************************************************
     // manages functions on the navigation bar, including the log out function
     // *********************************************************************** 
     $scope.logout = function() {
         Auth.removeToken();
-        location.reload("/");
+        $location.path("/");
     };
 }]).controller("LoginCtrl", ["$scope", "$http", "$location", "Auth",
     // *************************************************************
@@ -99,6 +132,29 @@ angular.module('MealsCtrls', ['MealsServices', 'ngMap', 'ui.bootstrap']).control
         };
     }
 ]).controller("SignupCtrl", ["$scope", "$http", "$location", "Auth",
+    // *********************************************************
+    // controller handling when a new user signs up for the site
+    // *********************************************************
+    function($scope, $http, $location, Auth) {
+        $scope.user = {
+            email: "",
+            password: "",
+        };
+        $scope.actionName = "Signup";
+        $scope.userAction = function() {
+            $http.post("/api/users", $scope.user).then(function(res) {
+                $http.post("/api/auth", $scope.user).then(function(res) {
+                    Auth.saveToken(res.data.token);
+                    $location.path("/");
+                }, function(res) {
+                    console.log(res.data);
+                });
+            }, function(res) {
+                console.log(res.data);
+            });
+        }
+    }
+]).controller("UserCtrl", ["$scope", "$http", "$location", "User",
     // *********************************************************
     // controller handling when a new user signs up for the site
     // *********************************************************

@@ -15,10 +15,10 @@
     <ul class="nav navbar-nav navbar-right">
       <li><a href="/about">About</a></li>
       <li><a href="/list">Meals</a></li>
-      <li><a href="/user/favorites" ng-show="isLoggedIn()">Favorites</a></li>
+      <li><a href="/user/{{ currentUser.id }}/profile" ng-show="isLoggedIn()">Favorites</a></li>
       <li><a href="/signup" ng-hide="isLoggedIn()">Signup</a></li>
       <li><a href="/login" ng-hide="isLoggedIn()">Login</a></li>
-      <li><a ng-click="logout()" ng-show="isLoggedIn()">Logout</a></li>
+      <li><a ng-click="logout()" ng-show="isLoggedIn()" id="logoutLink">Logout</a></li>
     </ul>
   </div><!-- /.navbar-collapse -->
 </nav>

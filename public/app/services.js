@@ -3,9 +3,17 @@ var TOKEN_STORAGE = "secretrecipes-token";
 angular.module('MealsServices', ['ngResource', 'ngMap']).factory('Meal', ['$resource', function($resource) {
     return $resource('https://data.seattle.gov/resource/47rs-c243.json');
 }])
+.factory('Favorites', ['$resource', "$routeParams", 
+	function($resource, $routeParams) {
+	    return $resource('/api/users/:id/favorites', {}, {
+	    	saveFavorites: {method: 'POST'}
+    });
+}])
 .factory("User", ["$resource", "Auth", function($resource, Auth) {
 	var token = Auth.getToken();
-	return $resource('https://localhost3000/api/users/:id', {}, {headers: {'Authorization' : 'Bearer ' + token}});
+	return $resource('http://localhost:3000/api/users/:id', {}, {
+		headers: {'Authorization' : 'Bearer ' + token}
+	});
 }])
 .factory("Auth", ["$window", function($window) {
 	return {
@@ -19,7 +27,19 @@ angular.module('MealsServices', ['ngResource', 'ngMap']).factory('Meal', ['$reso
 		isLoggedIn: function() {
 			var token = this.getToken();
 			return token ? true : false;
-		}
+		},
+		currentUser: function() {
+	      if (this.isLoggedIn()) {
+	        var token = this.getToken();
+	        try {
+	          var payload = JSON.parse($window.atob(token.split('.')[1]));
+	          console.log(payload);
+	          	return payload;
+	        } catch(err) {
+	          	return false;
+	        }
+	      }
+	    }
 	}
 }])
 .factory("AuthInterceptor", ["Auth", function(Auth){

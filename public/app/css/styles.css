@@ -27,6 +27,10 @@ body {
 	font-size: 2.5rem;
 }
 
+#logoutLink {
+	cursor: pointer;
+}
+
 /* splash page */
 #titleDiv {
 	margin-top: 12%;

@@ -1,10 +1,9 @@
-<h1>This is the airplane you selected!</h1>
+<h1>{{ currentUser.username }}'s Favorites</h1>
 
-<div>
-	<button><a href="/">Back to Homepage</a></button>
+<div ng-repeat="meal in currentUser.favorites">
+	<h5>{{ meal.program }}</h5>
+	<h5>{{ meal.location }}</h5>
+	<h5>{{ meal.time }}</h5>
+	<h5>{{ meal.meal }}</h5>
+	<h5>{{ meal.served }}</h5>
 </div>
-
-<h3>Manufacturer: {{ airplane.manufacturer }}</h3>
-<h3>Model: {{ airplane.model }}</h3>
-<h3>Number of Engines: {{ airplane.engines }}</h3>
-<img src="{{ airplane.image }}">
