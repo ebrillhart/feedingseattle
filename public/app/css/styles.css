@@ -129,6 +129,7 @@ body {
 	font-size: 7rem;
 	font-weight: bold;
 	color: #232323;
+	margin-bottom: 3%;
 }
 
 #aboutDiv {
@@ -137,4 +138,34 @@ body {
 	margin-bottom: 5%;
 	border-radius: 2px;
 	color: #232323;
+}
+
+#icons {
+	text-align: center;
+	letter-spacing: 20px;
+	font-size: 4rem;
+}
+
+a, a:hover {
+	color: #1A3C6A;
+	text-decoration: none;
+}
+
+.aboutText {
+	font-size: 1.6rem;
+}
+
+/* signup and login form */
+#signInDiv {
+	background-color: rgba(201, 201, 201, 0.5);
+	padding: 5%;
+	margin-bottom: 5%;
+	border-radius: 2px;
+	color: #232323;
+}
+
+.btn-primary, .btn-primary:hover {
+	background-color: #1A3C6A;
+	border-color: #1A3C6A;
+	border-radius: 2px;
 }

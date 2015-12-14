@@ -1,3 +1,4 @@
+<div id="signInDiv">
 <form ng-submit="userAction()">
 	<legend>{{ actionName }}</legend>
 	<div class="form-group">
@@ -8,5 +9,6 @@
 		<label for="password">Password</label>
 		<input type="password" class="form-control" id="password" placeholder="Password" ng-model="user.password">
 	</div>
-	<button type="submit" class="btn btn-primary">Login</button>
+	<button type="submit" class="btn btn-primary">{{ actionName }}</button>
 </form>
+</div>

@@ -21,15 +21,6 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
         templateUrl: "app/views/404.html"
     });
     $locationProvider.html5Mode(true);
-}]).config(["$httpProvider", function($httpProvider){
-    $httpProvider.defaults.headers.common = {};
-    $httpProvider.defaults.headers.post = {};
-    $httpProvider.defaults.headers.put = {};
-    $httpProvider.defaults.headers.patch = {};
-
-
-    $httpProvider.interceptors.push('AuthInterceptor');
-    // $httpProvider.defaults.headers.common.Authorization = 'Bearer ' + Auth.getAuthToken();
 }]).run(["$rootScope", "Auth", function($rootScope, Auth) {
     $rootScope.isLoggedIn = function() {
         return Auth.isLoggedIn.apply(Auth);

@@ -3,8 +3,9 @@ var TOKEN_STORAGE = "secretrecipes-token";
 angular.module('MealsServices', ['ngResource', 'ngMap']).factory('Meal', ['$resource', function($resource) {
     return $resource('https://data.seattle.gov/resource/47rs-c243.json');
 }])
-.factory("User", ["$resource", function($resource) {
-	return $resource('https://localhost3000/api/users/:id');
+.factory("User", ["$resource", "Auth", function($resource, Auth) {
+	var token = Auth.getToken();
+	return $resource('https://localhost3000/api/users/:id', {}, {headers: {'Authorization' : 'Bearer ' + token}});
 }])
 .factory("Auth", ["$window", function($window) {
 	return {
