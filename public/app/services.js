@@ -5,8 +5,9 @@ angular.module('MealsServices', ['ngResource', 'ngMap']).factory('Meal', ['$reso
 }])
 .factory('Favorites', ['$resource', "$routeParams", 
 	function($resource, $routeParams) {
-	    return $resource('/api/users/:id/favorites', {}, {
-	    	saveFavorites: {method: 'POST'}
+	    return $resource('/api/users/:id/favorites/:idx', {}, {
+	    	saveFavorites: {method: 'POST'},
+	    	removeFavorites: {method: 'DELETE'}
     });
 }])
 .factory("User", ["$resource", "Auth", function($resource, Auth) {

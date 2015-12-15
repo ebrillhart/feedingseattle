@@ -1,7 +1,7 @@
-angular.module('MealsCtrls', ['MealsServices', 'ngMap', 'ui.bootstrap']).controller('MealCtrl', ['$scope', 'NgMap', 'Meal', 'User', 'Favorites', function($scope, NgMap, Meal, User, Favorites) {
-    // *********************************************************
-    // meal controller for meals list page and all functionality
-    // *********************************************************
+angular.module('MealsCtrls', ['MealsServices', 'ngMap', 'ui.bootstrap']).controller('MealCtrl', ['$scope', 'NgMap', 'Meal', 'User', 'Favorites', "$http", function($scope, NgMap, Meal, User, Favorites, $http) {
+    // ***********************************************************
+    // meal controller for meals list page and user favorites page
+    // ***********************************************************
     // initializing map with NgMap
     NgMap.getMap().then(function(map) {
         NgMap.event.addListenerOnce(map, 'idle', function() {
@@ -54,7 +54,7 @@ angular.module('MealsCtrls', ['MealsServices', 'ngMap', 'ui.bootstrap']).control
             if (meal.people_served.toLowerCase() == "open to all" || meal.people_served == "OPEN TO ALL /            Must be sober" || meal.people_served.toLowerCase() == "open to all ") {
                 filteredMeals.push(meal)
             }
-        })
+        });
         mealType(filteredMeals);
     };
     // show meals open to certain demographics
@@ -68,42 +68,64 @@ angular.module('MealsCtrls', ['MealsServices', 'ngMap', 'ui.bootstrap']).control
             if (meal.people_served.toLowerCase() != "open to all" && meal.people_served.toLowerCase() != "open to all ") {
                 filteredMeals.push(meal)
             }
-        })
+        });
         mealType(filteredMeals);
     };
-    $scope.addToFavorites = function(index, whichMeal) {
-            // $scope.program = program;
-            // $scope.location = location;
-            // $scope.time = time;
-            // $scope.meal = meal;
-            // $scope.served = served;
-            var meal = $scope.whichMeal[index];
+    // function for adding and removing meals from a user's favorites
+    User.get({
+        id: $scope.currentUser.id
+    }, function success(data) {
+        $scope.user = data;
+        // favorite add function
+        $scope.addToFavorites = function(index, whichMeal) {
+            var meal = $scope[whichMeal][index];
             var favoritesObj = {
-                program: meal.program,
+                program: meal.name_of_program,
                 location: meal.location,
-                time: meal.time,
-                meal: meal.meal,
-                served: meal.served
+                time: meal.day_time,
+                meal: meal.meal_served,
+                served: meal.people_served
             };
             console.log(favoritesObj);
             Favorites.saveFavorites({
                 id: $scope.user.id
             }, favoritesObj, function success(data) {
-                console.log("This is hitting" + data);
+                console.log(data);
                 $scope.user.favorites.push(favoritesObj);
             }, function error(data) {
-                console.log("Error" + data);
+                console.log(data);
             });
             console.log($scope.user);
         };
-    // function for adding meals to a user's favorites
-    User.get({
-        id: $scope.currentUser.id
-    }, function success(data) {
-        $scope.user = data; 
+        // favorite delete function
+        $scope.removeFromFavorites = function(index) {
+            var indexA = index;
+            Favorites.removeFavorites({
+                idx: indexA,
+                id: $scope.user.id
+            }, indexA, function success(data) {
+                console.log(data);
+                $scope.user.favorites.splice(indexA, 1);
+            }, function error(data) {
+                console.log(data);
+            });
+        };
     }, function error(data) {
         console.log(data);
     });
+    // changing the add to favorites button into a go to favorites button if that meal has already been added to favorites
+    $scope.isAFavorite = function(index, whichMeal) {
+        $scope.user = $scope.currentUser;
+        var meal = $scope[whichMeal][index];
+        var found = false;
+        for (var i = 0; i < $scope.user.favorites.length; i++) {
+            if ($scope.user.favorites[i].program == meal.name_of_program && $scope.user.favorites[i].time == meal.day_time) {
+                found = true;
+                return true;
+                break;
+            }
+        }
+    };
 }]).controller('NavCtrl', ['$scope', "Auth", "$location", function($scope, Auth, $location) {
     // ***********************************************************************
     // manages functions on the navigation bar, including the log out function

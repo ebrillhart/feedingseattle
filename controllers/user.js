@@ -51,7 +51,24 @@ router.route('/:id')
       res.send({'message': 'success'});
     })
     });
-  })
+  });
 
+  router.route('/:id/favorites/:idx')
+  .get(function(req, res) {
+    User.findById(req.params.id, function(err, user) {
+      if (err) return res.status(500).send(err);
+      res.send(user);
+    });
+  })
+  .delete(function(req, res) {
+    User.findById(req.params.id, function(err, user) {
+      user.favorites.splice(req.params.idx, 1);
+
+      user.save(function(err) {
+        if (err) return res.status(500).send(err);
+        res.send({'message': 'success'});
+      });
+    });
+  });
 
 module.exports = router;

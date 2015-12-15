@@ -30,7 +30,7 @@
 		    <div class="col-md-6">
 		        <h5>{{meal.day_time}}</h5>
 		        <h5>{{meal.location}}, WA</h5>
-		        <form  method="POST" role="form" ng-submit='addToFavorites($index, breakfast)'>
+		        <form  method="POST" role="form" ng-submit='addToFavorites($index, "breakfast")'>
 					<div class="form-group" hidden>
 						<input type="text" class="form-control" ng-model="program" value="{{ meal.name_of_program }}" hidden>
 					</div>
@@ -46,8 +46,9 @@
 					<div class="form-group" hidden>
 						<input type="text" class="form-control" ng-model='served' value="{{ meal.people_served }}" hidden>
 					</div>
-						<button type="submit" class="btn faveButton">Add to Favorites</button>
+						<button type="submit" class="btn faveButton" ng-show="isLoggedIn()" ng-hide="isAFavorite($index, 'breakfast')">Add to Favorites</button>
 				</form>
+				<button type="submit" class="btn seeFavesButton" ng-show="isAFavorite($index, 'breakfast')"><a href="/user/{{ currentUser.id }}/profile">See Favorites</a></button>
 		    </div>
 		    <!-- location map -->
 		    <div class="col-md-6">
@@ -72,7 +73,25 @@
 		<div class="col-md-6">
 		    <h5>{{meal.day_time}}</h5>
 		    <h5>{{meal.location}}, WA</h5>
-		    <button class="btn btn-default faveButton">Add to Favorites</button>
+		    <form  method="POST" role="form" ng-submit='addToFavorites($index, "lunch")'>
+					<div class="form-group" hidden>
+						<input type="text" class="form-control" ng-model="program" value="{{ meal.name_of_program }}" hidden>
+					</div>
+					<div class="form-group" hidden>
+						<input type="text" class="form-control" ng-model='location' value="{{ meal.location }}" hidden>
+					</div>
+					<div class="form-group" hidden>
+						<input type="text" class="form-control" ng-model='time' value="{{ meal.day_time }}" hidden>
+					</div>
+					<div class="form-group" hidden>
+						<input type="text" class="form-control" ng-model='meal' value="{{ meal.meal_served }}" hidden>
+					</div>
+					<div class="form-group" hidden>
+						<input type="text" class="form-control" ng-model='served' value="{{ meal.people_served }}" hidden>
+					</div>
+						<button type="submit" class="btn faveButton" ng-show="isLoggedIn()" ng-hide="isAFavorite($index, 'lunch')">Add to Favorites</button>
+				</form>
+				<button type="submit" class="btn seeFavesButton" ng-show="isAFavorite($index, 'lunch')"><a href="/user/{{ currentUser.id }}/profile">See Favorites</a></button>
 		</div>
 		<!-- location map -->
 		<div class="col-md-6">
@@ -97,7 +116,25 @@
 		<div class="col-md-6">
 			<h5>{{meal.day_time}}</h5>
 			<h5>{{meal.location}}, WA</h5>
-			<button class="btn btn-default faveButton">Add to Favorites</button>
+			<form  method="POST" role="form" ng-submit='addToFavorites($index, "dinner")'>
+					<div class="form-group" hidden>
+						<input type="text" class="form-control" ng-model="program" value="{{ meal.name_of_program }}" hidden>
+					</div>
+					<div class="form-group" hidden>
+						<input type="text" class="form-control" ng-model='location' value="{{ meal.location }}" hidden>
+					</div>
+					<div class="form-group" hidden>
+						<input type="text" class="form-control" ng-model='time' value="{{ meal.day_time }}" hidden>
+					</div>
+					<div class="form-group" hidden>
+						<input type="text" class="form-control" ng-model='meal' value="{{ meal.meal_served }}" hidden>
+					</div>
+					<div class="form-group" hidden>
+						<input type="text" class="form-control" ng-model='served' value="{{ meal.people_served }}" hidden>
+					</div>
+						<button type="submit" class="btn faveButton" ng-show="isLoggedIn()" ng-hide="isAFavorite($index, 'dinner')">Add to Favorites</button>
+				</form>
+				<button type="submit" class="btn seeFavesButton" ng-show="isAFavorite($index, 'dinner')"><a href="/user/{{ currentUser.id }}/profile">See Favorites</a></button>
 		</div>
 		<!-- location map -->
 		<div class="col-md-6">
@@ -122,7 +159,25 @@
 	    <div class="col-md-6">
 	    	<h5>{{meal.day_time}}</h5>
 	        <h5>{{meal.location}}, WA</h5>
-	        <button class="btn btn-default faveButton">Add to Favorites</button>
+	        <form  method="POST" role="form" ng-submit='addToFavorites($index, "otherMeals")'>
+					<div class="form-group" hidden>
+						<input type="text" class="form-control" ng-model="program" value="{{ meal.name_of_program }}" hidden>
+					</div>
+					<div class="form-group" hidden>
+						<input type="text" class="form-control" ng-model='location' value="{{ meal.location }}" hidden>
+					</div>
+					<div class="form-group" hidden>
+						<input type="text" class="form-control" ng-model='time' value="{{ meal.day_time }}" hidden>
+					</div>
+					<div class="form-group" hidden>
+						<input type="text" class="form-control" ng-model='meal' value="{{ meal.meal_served }}" hidden>
+					</div>
+					<div class="form-group" hidden>
+						<input type="text" class="form-control" ng-model='served' value="{{ meal.people_served }}" hidden>
+					</div>
+						<button type="submit" class="btn faveButton" ng-show="isLoggedIn()" ng-hide="isAFavorite($index, 'otherMeals')">Add to Favorites</button>
+				</form>
+				<button type="submit" class="btn seeFavesButton" ng-show="isAFavorite($index, 'otherMeals')"><a href="/user/{{ currentUser.id }}/profile">See Favorites</a></button>
 	    </div>
 	    <!-- location map -->
 	    <div class="col-md-6">

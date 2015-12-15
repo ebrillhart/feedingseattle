@@ -1,9 +1,14 @@
-<h1>{{ currentUser.username }}'s Favorites</h1>
+<div id="favesDiv">
+<h1 id="favesHeader">{{ user.username }}'s Favorites</h1>
 
-<div ng-repeat="meal in currentUser.favorites">
-	<h5>{{ meal.program }}</h5>
-	<h5>{{ meal.location }}</h5>
-	<h5>{{ meal.time }}</h5>
-	<h5>{{ meal.meal }}</h5>
-	<h5>{{ meal.served }}</h5>
+<div class="row">
+<div class="col-md-3" ng-repeat="meal in user.favorites track by $index">
+	<h5 class="favesText">{{ meal.program }}</h5>
+	<h5 class="favesText">{{ meal.location }}</h5>
+	<h5 class="favesText">{{ meal.time }}</h5>
+	<h5 class="favesText">{{ meal.meal }}</h5>
+	<h5 class="favesText">{{ meal.served }}</h5>
+	<button class="btn btn-default removeBtn" ng-click="removeFromFavorites($index)">Remove from Favorites</button>
+</div>
+</div>
 </div>

@@ -1,4 +1,11 @@
+/************************/
+
+
 /* full-site and navbar */
+
+
+/************************/
+
 body {
     background: url(../images/spaceneedle.jpeg) no-repeat center center fixed;
     -webkit-background-size: cover;
@@ -9,63 +16,79 @@ body {
 }
 
 .navbar-default {
-	background-color: #232323;
-	border-color: #232323;
-	border-radius: 0px;
-	padding: 1%;
+    background-color: #232323;
+    border-color: #232323;
+    border-radius: 0px;
+    padding: 1%;
 }
 
 .navbar-default .navbar-nav>li>a, .navbar-default .navbar-brand, .navbar-default .navbar-nav>li>a:hover, .navbar-default .navbar-brand:hover, .navbar-default .navbar-nav>li>a:visited, .navbar-default .navbar-brand:visited {
-	color: #C9C9C9;
+    color: #C9C9C9;
 }
 
 .navbar-default .navbar-nav>li>a {
-	font-size: 1.75rem;
+    font-size: 1.75rem;
 }
 
 .navbar-default .navbar-brand {
-	font-size: 2.5rem;
+    font-size: 2.5rem;
 }
 
 #logoutLink {
-	cursor: pointer;
+    cursor: pointer;
 }
 
+
+/***************/
+
+
 /* splash page */
+
+
+/***************/
+
 #titleDiv {
-	margin-top: 12%;
-	margin-bottom: 10%;
-	background-color: rgba(201, 201, 201, 0.4);
-	padding: 2%;
-	border-radius: 2px;
-	width: 47%;
+    margin-top: 12%;
+    margin-bottom: 10%;
+    background-color: rgba(201, 201, 201, 0.4);
+    padding: 2%;
+    border-radius: 2px;
+    width: 47%;
 }
 
 .titleMain {
-	font-size: 12rem;
-	margin-top: 0px;
-	font-weight: 900;
-	margin-bottom: 0px;
-	padding: 0px;
-	color: #232323;
+    font-size: 12rem;
+    margin-top: 0px;
+    font-weight: 900;
+    margin-bottom: 0px;
+    padding: 0px;
+    color: #232323;
 }
 
 .titleSmall {
-	margin-top: 0px;
-	margin-bottom: 0px;
-	padding: 0px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    padding: 0px;
 }
 
 .titleSmall small {
-	color: #6E6E6E;
+    color: #6E6E6E;
 }
 
+
+/*************/
+
+
 /* List Page */
+
+
+/*************/
+
 #listDiv {
-	background-color: rgba(201, 201, 201, 0.4);
-	padding: 5%;
-	margin-bottom: 5%;
-	border-radius: 2px;
+    background-color: rgba(201, 201, 201, 0.4);
+    padding: 5%;
+    margin-bottom: 5%;
+    border-radius: 2px;
 }
 
 #map {
@@ -74,102 +97,149 @@ body {
 }
 
 #filterRow {
-	margin-bottom: 5%;
+    margin-bottom: 5%;
 }
 
 #jump, #filter {
-	font-size: 3rem;
-	font-weight: bold;
-	color: #232323;
+    font-size: 3rem;
+    font-weight: bold;
+    color: #232323;
 }
 
 .foodHeader {
-	font-size: 4rem;
-	font-weight: bold;
-	color: #232323;
-	text-align: center;
+    font-size: 4rem;
+    font-weight: bold;
+    color: #232323;
+    text-align: center;
 }
 
 .panel-title {
-	color: #232323;
-	font-size: 2rem;
-	padding: 1%;
+    color: #232323;
+    font-size: 2rem;
+    padding: 1%;
 }
 
 .panel-default {
-	width: 80%;
+    width: 80%;
 }
 
 .panel-title>a:hover {
-	text-decoration: none;
-	font-size: 2.05rem;
+    text-decoration: none;
+    font-size: 2.05rem;
 }
 
 .panel-default>.panel-heading {
-	background-color: #BEBEBE;
-	border-radius: 2px;
-	border-color: #C9C9C9;
+    background-color: #BEBEBE;
+    border-radius: 2px;
+    border-color: #C9C9C9;
 }
 
 .panel-body {
-	background-color: #EBEBEB;
+    background-color: #EBEBEB;
 }
 
 .panel-body h5 {
-	font-size: 2rem;
+    font-size: 2rem;
 }
 
 .jumpButton, .filterButton, .faveButton, .jumpButton:hover, .filterButton:hover, .faveButton:hover, .jumpButton:visited, .filterButton:visited, .faveButton:visited {
-	background-color: #232323;
-	border-radius: 2px;
-	color: #C9C9C9;
-	margin: 1%;
-	padding: 3%;
-	font-size: 1.5rem;
+    background-color: #232323;
+    border-radius: 2px;
+    color: #C9C9C9;
+    margin: 1%;
+    padding: 3%;
+    font-size: 1.5rem;
 }
 
+.seeFavesButton, .seeFavesButton a, .seeFavesButton a:hover, .seeFavesButton a:active, .seeFavesButton a:visited {
+    background-color: #1A3C6A;
+    border-radius: 2px;
+    color: #C9C9C9;
+    margin: 1%;
+    padding: 3%;
+    font-size: 1.5rem;
+}
+
+/******************/
+
+
+/* favorites page */
+
+
+/******************/
+#favesDiv {
+	background-color: rgba(201, 201, 201, 0.7);
+    padding: 5%;
+    margin-bottom: 5%;
+    border-radius: 2px;
+}
+
+#favesHeader {
+	font-size: 5rem;
+	margin-bottom: 4%;
+}
+
+.favesText {
+	font-size: 1.7rem;
+}
+
+/**************/
+
+
 /* about page */
+
+
+/**************/
+
 #aboutHeader {
-	font-size: 7rem;
-	font-weight: bold;
-	color: #232323;
-	margin-bottom: 3%;
+    font-size: 7rem;
+    font-weight: bold;
+    color: #232323;
+    margin-bottom: 3%;
 }
 
 #aboutDiv {
-	background-color: rgba(201, 201, 201, 0.5);
-	padding: 5%;
-	margin-bottom: 5%;
-	border-radius: 2px;
-	color: #232323;
+    background-color: rgba(201, 201, 201, 0.5);
+    padding: 5%;
+    margin-bottom: 5%;
+    border-radius: 2px;
+    color: #232323;
 }
 
 #icons {
-	text-align: center;
-	letter-spacing: 20px;
-	font-size: 4rem;
+    text-align: center;
+    letter-spacing: 20px;
+    font-size: 4rem;
 }
 
 a, a:hover {
-	color: #1A3C6A;
-	text-decoration: none;
+    color: #1A3C6A;
+    text-decoration: none;
 }
 
 .aboutText {
-	font-size: 1.6rem;
+    font-size: 1.6rem;
 }
 
+
+/*************************/
+
+
 /* signup and login form */
+
+
+/*************************/
+
 #signInDiv {
-	background-color: rgba(201, 201, 201, 0.5);
-	padding: 5%;
-	margin-bottom: 5%;
-	border-radius: 2px;
-	color: #232323;
+    background-color: rgba(201, 201, 201, 0.5);
+    padding: 5%;
+    margin-bottom: 5%;
+    border-radius: 2px;
+    color: #232323;
 }
 
 .btn-primary, .btn-primary:hover {
-	background-color: #1A3C6A;
-	border-color: #1A3C6A;
-	border-radius: 2px;
+    background-color: #1A3C6A;
+    border-color: #1A3C6A;
+    border-radius: 2px;
 }
