@@ -1,8 +1,8 @@
 <div id="favesDiv">
-<h1 id="favesHeader">{{ user.username }}'s Favorites</h1>
+<h1 id="favesHeader">{{ currentUser.username }}'s Favorites</h1>
 
 <div class="row">
-<div class="col-md-6" ng-repeat="meal in user.favorites track by $index" id="favSmallDiv">
+<div class="col-md-6" ng-repeat="meal in currentUser.favorites track by $index" id="favSmallDiv">
 	<h5 class="favesText">{{ meal.program }}</h5>
 	<h5 class="favesText">{{ meal.location }}</h5>
 	<h5 class="favesText">{{ meal.time }}</h5>
