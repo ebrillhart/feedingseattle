@@ -137,6 +137,7 @@ angular.module('MealsCtrls', ['MealsServices', 'ngMap', 'ui.bootstrap']).control
     $scope.logout = function() {
         Auth.removeToken();
         $location.path("/");
+        $scope.currentUser = "";
     };
 }]).controller("LoginCtrl", ["$scope", "$http", "$location", "Auth",
     // *************************************************************
@@ -157,6 +158,7 @@ angular.module('MealsCtrls', ['MealsServices', 'ngMap', 'ui.bootstrap']).control
             });
         };
     }
+
 ]).controller("SignupCtrl", ["$scope", "$http", "$location", "Auth",
     // *********************************************************
     // controller handling when a new user signs up for the site
