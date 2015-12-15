@@ -154,7 +154,7 @@ body {
 .seeFavesButton, .seeFavesButton a, .seeFavesButton a:hover, .seeFavesButton a:active, .seeFavesButton a:visited {
     background-color: #1A3C6A;
     border-radius: 2px;
-    color: #C9C9C9;
+    color: #EBEBEB;
     margin: 1%;
     padding: 3%;
     font-size: 1.5rem;

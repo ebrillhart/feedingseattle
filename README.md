@@ -1,6 +1,15 @@
 # Feeding Seattle
 Uses Socrata Open Data to display a list and map of meal programs for homeless and low-income individuals. Registered users can create a list of saved/favorite programs. 
 
+####User Stories
+* User Story 1: This user is homeless and living in a shelter without a food program. She frequently uses the library as daytime shelter and for the internet. She can create a favorites page and print it out to have a list of the food programs that work best for her without having to use the computer every day.
+* User Story 2: This user is low-income and uses a smartphone as their main way of accessing the internet. He can easily create a list of meal programs that work well for him using Feeding Seattle and reference them on his phone as needed.
+* User Story 3: This user wants to help volunteer for or donate money to a meal program in Seattle. She can find ones near her and/or during times that she is free and then use the contact info on the about page to reach out about volunteering, or simply donate to the program if she'd prefer to help them monetarily. 
+
+####ERDs
+
+####Wireframes
+
 ####Highlights
 * Registered users can add and remove favorites from a personal page
 * Separate CSS for readable printed pages
