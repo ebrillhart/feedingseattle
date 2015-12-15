@@ -145,17 +145,19 @@ body {
 .jumpButton, .filterButton, .faveButton, .jumpButton:hover, .filterButton:hover, .faveButton:hover, .jumpButton:visited, .filterButton:visited, .faveButton:visited {
     background-color: #232323;
     border-radius: 2px;
+    border-color: #232323;
     color: #C9C9C9;
-    margin: 1%;
+    margin: 1%, 1%, 1%, 0%;
     padding: 3%;
     font-size: 1.5rem;
 }
 
 .seeFavesButton, .seeFavesButton a, .seeFavesButton a:hover, .seeFavesButton a:active, .seeFavesButton a:visited {
     background-color: #1A3C6A;
+    border-color: #1A3C6A;
     border-radius: 2px;
     color: #EBEBEB;
-    margin: 1%;
+    margin: 1%, 1%, 1%, 0%;
     padding: 3%;
     font-size: 1.5rem;
 }
@@ -181,6 +183,20 @@ body {
 
 .favesText {
 	font-size: 1.7rem;
+}
+
+.removeBtn {
+	background-color: #1A3C6A;
+    border-radius: 2px;
+    color: #EBEBEB;
+    margin: 3%, 1%, 1%, 0%;
+    padding: 3%;
+    font-size: 1.5rem;
+    border-color: #1A3C6A;
+}
+
+#favSmallDiv {
+	margin-bottom: 3%;
 }
 
 /**************/
