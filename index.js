@@ -4,12 +4,13 @@ var path = require('path');
 var expressJWT = require('express-jwt');
 var jwt = require('jsonwebtoken');
 var app = express();
+var port = process.env.PORT || 3000;
 
 var secret = "mysupersecretpassword";
 
 var mongoose = require('mongoose');
 var User = require('./models/user');
-mongoose.connect('mongodb://localhost/feedingseattle');
+mongoose.connect(process.env.MONGOLAB_URI || 'mongodb://localhost/feedingseattle');
 
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.json());
@@ -42,4 +43,6 @@ app.get('/*', function(req, res) {
 	res.sendFile(path.join(__dirname, 'public/index.html'));
 });
 
-app.listen(3000);
+app.listen(port, function(){
+  console.log("running!");
+});
