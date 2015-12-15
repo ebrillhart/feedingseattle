@@ -131,6 +131,7 @@ angular.module('MealsCtrls', ['MealsServices', 'ngMap', 'ui.bootstrap']).control
         id: $scope.currentUser.id
     }, function success(data) {
         $scope.user = data;
+        console.log("This user is " + $scope.user)
         // favorite add function
         $scope.addToFavorites = function(index, whichMeal) {
             var meal = $scope[whichMeal][index];
