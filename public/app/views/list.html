@@ -175,7 +175,7 @@
 					<div class="form-group" hidden>
 						<input type="text" class="form-control" ng-model='served' value="{{ meal.people_served }}" hidden>
 					</div>
-						<button type="submit" class="btn faveButton" ng-show="isLoggedIn()" ng-hide="isAFavorite($index, 'otherMeals')">Add to Favorites</button>
+						<button type="submit" ng-controller="UserCtrl" class="btn faveButton" ng-show="isLoggedIn()" ng-hide="isAFavorite($index, 'otherMeals')">Add to Favorites</button>
 				</form>
 				<button type="submit" class="btn seeFavesButton" ng-show="isAFavorite($index, 'otherMeals')"><a href="/user/{{ currentUser.id }}/profile">See Favorites</a></button>
 	    </div>
