@@ -114,18 +114,6 @@ angular.module('MealsCtrls', ['MealsServices', 'ngMap', 'ui.bootstrap']).control
     //     console.log(data);
     // });
     // changing the add to favorites button into a go to favorites button if that meal has already been added to favorites
-    $scope.isAFavorite = function(index, whichMeal) {
-        $scope.user = $scope.currentUser;
-        var meal = $scope[whichMeal][index];
-        var found = false;
-        for (var i = 0; i < $scope.user.favorites.length; i++) {
-            if ($scope.user.favorites[i].program == meal.name_of_program && $scope.user.favorites[i].time == meal.day_time) {
-                found = true;
-                return true;
-                break;
-            }
-        }
-    };
 }]).controller('NavCtrl', ['$scope', "Auth", "$location", function($scope, Auth, $location) {
     // ***********************************************************************
     // manages functions on the navigation bar, including the log out function
@@ -179,6 +167,19 @@ angular.module('MealsCtrls', ['MealsServices', 'ngMap', 'ui.bootstrap']).control
     }, function error(data) {
         console.log(data);
     });
+
+    $scope.isAFavorite = function(index, whichMeal) {
+        $scope.user = $scope.currentUser;
+        var meal = $scope[whichMeal][index];
+        var found = false;
+        for (var i = 0; i < $scope.user.favorites.length; i++) {
+            if ($scope.user.favorites[i].program == meal.name_of_program && $scope.user.favorites[i].time == meal.day_time) {
+                found = true;
+                return true;
+                break;
+            }
+        }
+    };
 }]).controller("LoginCtrl", ["$scope", "$http", "$location", "Auth",
     // *************************************************************
     // controller handling when an existing user logs in to the site

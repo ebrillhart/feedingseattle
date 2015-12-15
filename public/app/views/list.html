@@ -177,7 +177,7 @@
 					</div>
 						<button type="submit" ng-controller="UserCtrl" class="btn faveButton" ng-show="isLoggedIn()" ng-hide="isAFavorite($index, 'otherMeals')">Add to Favorites</button>
 				</form>
-				<button type="submit" class="btn seeFavesButton" ng-show="isAFavorite($index, 'otherMeals')"><a href="/user/{{ currentUser.id }}/profile">See Favorites</a></button>
+				<button type="submit" ng-controller="UserCtrl" class="btn seeFavesButton" ng-show="isAFavorite($index, 'otherMeals')"><a href="/user/{{ currentUser.id }}/profile">See Favorites</a></button>
 	    </div>
 	    <!-- location map -->
 	    <div class="col-md-6">
