@@ -127,11 +127,12 @@ angular.module('MealsCtrls', ['MealsServices', 'ngMap', 'ui.bootstrap']).control
     // manages functions on the navigation bar, including the log out function
     // *********************************************************************** 
     $scope.user;
+    console.log($scope.currentUser);
     User.get({
         id: $scope.currentUser.id
     }, function success(data) {
         $scope.user = data;
-        console.log("This user is " + $scope.user)
+        console.log("This user is " + $scope.user);
         // favorite add function
         $scope.addToFavorites = function(index, whichMeal) {
             var meal = $scope[whichMeal][index];
