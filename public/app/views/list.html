@@ -46,9 +46,9 @@
 					<div class="form-group" hidden>
 						<input type="text" class="form-control" ng-model='served' value="{{ meal.people_served }}" hidden>
 					</div>
-						<button type="submit" class="btn faveButton" ng-show="isLoggedIn()" ng-hide="isAFavorite($index, 'breakfast')">Add to Favorites</button>
+						<button type="submit" class="btn faveButton" ng-show="auth.isLoggedIn() && !isAFavorite($index, 'breakfast')">Add to Favorites</button>
 				</form>
-				<button type="submit" class="btn seeFavesButton" ng-show="isAFavorite($index, 'breakfast')"><a href="/user/{{ currentUser.id }}/profile">See Favorites</a></button>
+				<button type="submit" class="btn seeFavesButton" ng-show="isAFavorite($index, 'breakfast')"><a href="/user/{{ auth.currentUser().id }}/profile">See Favorites</a></button>
 		    </div>
 		    <!-- location map -->
 		    <div class="col-md-6">
@@ -89,9 +89,9 @@
 					<div class="form-group" hidden>
 						<input type="text" class="form-control" ng-model='served' value="{{ meal.people_served }}" hidden>
 					</div>
-						<button type="submit" class="btn faveButton" ng-show="isLoggedIn()" ng-hide="isAFavorite($index, 'lunch')">Add to Favorites</button>
+						<button type="submit" class="btn faveButton" ng-show="!isAFavorite($index, 'lunch')">Add to Favorites</button>
 				</form>
-				<button type="submit" class="btn seeFavesButton" ng-show="isAFavorite($index, 'lunch')"><a href="/user/{{ currentUser.id }}/profile">See Favorites</a></button>
+				<button type="submit" class="btn seeFavesButton" ng-show="isAFavorite($index, 'lunch')"><a href="/user/{{ auth.currentUser().id }}/profile">See Favorites</a></button>
 		</div>
 		<!-- location map -->
 		<div class="col-md-6">
@@ -134,7 +134,7 @@
 					</div>
 						<button type="submit" class="btn faveButton" ng-show="isLoggedIn()" ng-hide="isAFavorite($index, 'dinner')">Add to Favorites</button>
 				</form>
-				<button type="submit" class="btn seeFavesButton" ng-show="isAFavorite($index, 'dinner')"><a href="/user/{{ currentUser.id }}/profile">See Favorites</a></button>
+				<button type="submit" class="btn seeFavesButton" ng-show="isAFavorite($index, 'dinner')"><a href="/user/{{ auth.currentUser().id }}/profile">See Favorites</a></button>
 		</div>
 		<!-- location map -->
 		<div class="col-md-6">
@@ -177,7 +177,7 @@
 					</div>
 						<button type="submit" class="btn faveButton" ng-show="isLoggedIn()" ng-hide="isAFavorite($index, 'otherMeals')">Add to Favorites</button>
 				</form>
-				<button type="submit" class="btn seeFavesButton" ng-show="isAFavorite($index, 'otherMeals')"><a href="/user/{{ currentUser.id }}/profile">See Favorites</a></button>
+				<button type="submit" class="btn seeFavesButton" ng-show="isAFavorite($index, 'otherMeals')"><a href="/user/{{ auth.currentUser().id }}/profile">See Favorites</a></button>
 	    </div>
 	    <!-- location map -->
 	    <div class="col-md-6">

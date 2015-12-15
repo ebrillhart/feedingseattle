@@ -21,9 +21,4 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
         templateUrl: "app/views/404.html"
     });
     $locationProvider.html5Mode(true);
-}]).run(["$rootScope", "Auth", "User", function($rootScope, Auth, User) {
-    $rootScope.isLoggedIn = function() {
-        return Auth.isLoggedIn.apply(Auth);
-    };
-    $rootScope.currentUser = Auth.currentUser();
 }]);

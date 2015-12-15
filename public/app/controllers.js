@@ -1,7 +1,9 @@
-angular.module('MealsCtrls', ['MealsServices', 'ngMap', 'ui.bootstrap']).controller('MealCtrl', ['$scope', 'NgMap', 'Meal', 'User', 'Favorites', "$http", function($scope, NgMap, Meal, User, Favorites, $http) {
+angular.module('MealsCtrls', ['MealsServices', 'ngMap', 'ui.bootstrap']).controller('MealCtrl', ['$scope', 'NgMap', 'Meal', 'User', 'Favorites', "$http", 'Auth', function($scope, NgMap, Meal, User, Favorites, $http, Auth) {
     // ***********************************************************
     // meal controller for meals list page and user favorites page
     // ***********************************************************
+    $scope.auth = Auth;
+    $scope.user = $scope.auth.currentUser();
     console.log("I'M ON THE MEAL CONTROLLER");
     // initializing map with NgMap
     NgMap.getMap().then(function(map) {
@@ -72,9 +74,9 @@ angular.module('MealsCtrls', ['MealsServices', 'ngMap', 'ui.bootstrap']).control
         });
         mealType(filteredMeals);
     };
-    if ($scope.currentUser) {
+    if ($scope.auth.currentUser()) {
         User.get({
-        id: $scope.currentUser.id
+        id: $scope.auth.currentUser().id
     }, function success(data) {
         $scope.user = data;
         console.log("This user is " + $scope.user);
@@ -116,17 +118,18 @@ angular.module('MealsCtrls', ['MealsServices', 'ngMap', 'ui.bootstrap']).control
         console.log(data);
     });
     }
-
     $scope.isAFavorite = function(index, whichMeal) {
-        $scope.user = $scope.currentUser;
-        var meal = $scope[whichMeal][index];
-        var found = false;
-        for (var i = 0; i < $scope.user.favorites.length; i++) {
-            if ($scope.user.favorites[i].program == meal.name_of_program && $scope.user.favorites[i].time == meal.day_time) {
-                found = true;
-                return true;
-                break;
+        console.log('user', $scope.user);
+        if($scope.user) {
+            var meal = $scope[whichMeal][index];
+            for (var i = 0; i < $scope.user.favorites.length; i++) {
+                if ($scope.user.favorites[i].program == meal.name_of_program && $scope.user.favorites[i].time == meal.day_time) {
+                    return true;
+                }
             }
+            return false;
+        } else {
+            return false;
         }
     };
     
@@ -134,10 +137,11 @@ angular.module('MealsCtrls', ['MealsServices', 'ngMap', 'ui.bootstrap']).control
     // ***********************************************************************
     // manages functions on the navigation bar, including the log out function
     // *********************************************************************** 
+    $scope.auth = Auth;
     $scope.logout = function() {
         Auth.removeToken();
+        $scope.user = {};
         $location.path("/");
-        $scope.currentUser = "";
     };
 }]).controller("LoginCtrl", ["$scope", "$http", "$location", "Auth",
     // *************************************************************
