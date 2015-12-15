@@ -72,49 +72,6 @@ angular.module('MealsCtrls', ['MealsServices', 'ngMap', 'ui.bootstrap']).control
         });
         mealType(filteredMeals);
     };
-    // function for adding and removing meals from a user's favorites
-    // User.get({
-    //     id: $scope.currentUser.id
-    // }, function success(data) {
-    //     $scope.user = data;
-    //     // favorite add function
-    //     $scope.addToFavorites = function(index, whichMeal) {
-    //         var meal = $scope[whichMeal][index];
-    //         var favoritesObj = {
-    //             program: meal.name_of_program,
-    //             location: meal.location,
-    //             time: meal.day_time,
-    //             meal: meal.meal_served,
-    //             served: meal.people_served
-    //         };
-    //         console.log(favoritesObj);
-    //         Favorites.saveFavorites({
-    //             id: $scope.user.id
-    //         }, favoritesObj, function success(data) {
-    //             console.log(data);
-    //             $scope.user.favorites.push(favoritesObj);
-    //         }, function error(data) {
-    //             console.log(data);
-    //         });
-    //         console.log($scope.user);
-    //     };
-    //     // favorite delete function
-    //     $scope.removeFromFavorites = function(index) {
-    //         var indexA = index;
-    //         Favorites.removeFavorites({
-    //             idx: indexA,
-    //             id: $scope.user.id
-    //         }, indexA, function success(data) {
-    //             console.log(data);
-    //             $scope.user.favorites.splice(indexA, 1);
-    //         }, function error(data) {
-    //             console.log(data);
-    //         });
-    //     };
-    // }, function error(data) {
-    //     console.log(data);
-    // });
-    // changing the add to favorites button into a go to favorites button if that meal has already been added to favorites
 }]).controller('NavCtrl', ['$scope', "Auth", "$location", function($scope, Auth, $location) {
     // ***********************************************************************
     // manages functions on the navigation bar, including the log out function
@@ -123,10 +80,10 @@ angular.module('MealsCtrls', ['MealsServices', 'ngMap', 'ui.bootstrap']).control
         Auth.removeToken();
         $location.path("/");
     };
-}]).controller('UserCtrl', ['$scope', "Auth", "User", "Favorites", "Meal", function($scope, Auth, User, Favorites, Meal) {
-    // ***********************************************************************
-    // manages functions on the navigation bar, including the log out function
-    // *********************************************************************** 
+}]).controller('UserCtrl', ["$scope", "Auth", "User", "Favorites", "Meal", function($scope, Auth, User, Favorites, Meal) {
+    // ****************************************************************
+    // manages functions on the favorites page and buttons on list page
+    // ****************************************************************
     console.log("I'M ON THE USER CONTROLLER");
     $scope.user;
     console.log($scope.currentUser);
@@ -217,29 +174,6 @@ angular.module('MealsCtrls', ['MealsServices', 'ngMap', 'ui.bootstrap']).control
         };
     }
 ]).controller("SignupCtrl", ["$scope", "$http", "$location", "Auth",
-    // *********************************************************
-    // controller handling when a new user signs up for the site
-    // *********************************************************
-    function($scope, $http, $location, Auth) {
-        $scope.user = {
-            email: "",
-            password: "",
-        };
-        $scope.actionName = "Signup";
-        $scope.userAction = function() {
-            $http.post("/api/users", $scope.user).then(function(res) {
-                $http.post("/api/auth", $scope.user).then(function(res) {
-                    Auth.saveToken(res.data.token);
-                    $location.path("/");
-                }, function(res) {
-                    console.log(res.data);
-                });
-            }, function(res) {
-                console.log(res.data);
-            });
-        }
-    }
-]).controller("UserCtrl", ["$scope", "$http", "$location", "User",
     // *********************************************************
     // controller handling when a new user signs up for the site
     // *********************************************************
