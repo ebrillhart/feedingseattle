@@ -115,6 +115,7 @@ angular.module('MealsCtrls', ['MealsServices', 'ngMap', 'ui.bootstrap']).control
     }, function error(data) {
         console.log(data);
     });
+    }
 
     $scope.isAFavorite = function(index, whichMeal) {
         $scope.user = $scope.currentUser;
@@ -128,7 +129,6 @@ angular.module('MealsCtrls', ['MealsServices', 'ngMap', 'ui.bootstrap']).control
             }
         }
     };
-    }
     
 }]).controller('NavCtrl', ['$scope', "Auth", "$location", function($scope, Auth, $location) {
     // ***********************************************************************
