@@ -5,7 +5,7 @@ angular.module('MealsServices', ['ngResource', 'ngMap']).factory('Meal', ['$reso
 }])
 .factory('Favorites', ['$resource', "$routeParams", 
 	function($resource, $routeParams) {
-	    return $resource('/api/users/:id/favorites/:idx', {}, {
+	    return $resource('https://feedingseattle.herokuapp.com/api/users/:id/favorites/:idx', {}, {
 	    	saveFavorites: {method: 'POST'},
 	    	removeFavorites: {method: 'DELETE'}
     });
