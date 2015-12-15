@@ -2,6 +2,7 @@ angular.module('MealsCtrls', ['MealsServices', 'ngMap', 'ui.bootstrap']).control
     // ***********************************************************
     // meal controller for meals list page and user favorites page
     // ***********************************************************
+    console.log("I'M ON THE MEAL CONTROLLER");
     // initializing map with NgMap
     NgMap.getMap().then(function(map) {
         NgMap.event.addListenerOnce(map, 'idle', function() {
@@ -126,6 +127,7 @@ angular.module('MealsCtrls', ['MealsServices', 'ngMap', 'ui.bootstrap']).control
     // ***********************************************************************
     // manages functions on the navigation bar, including the log out function
     // *********************************************************************** 
+    console.log("I'M ON THE USER CONTROLLER");
     $scope.user;
     console.log($scope.currentUser);
     User.get({
