@@ -2,9 +2,9 @@ angular.module('MealsCtrls', ['MealsServices', 'ngMap', 'ui.bootstrap']).control
     // ***********************************************************
     // meal controller for meals list page and user favorites page
     // ***********************************************************
+    // declaring auth and user
     $scope.auth = Auth;
     $scope.user = $scope.auth.currentUser();
-    console.log("I'M ON THE MEAL CONTROLLER");
     // initializing map with NgMap
     NgMap.getMap().then(function(map) {
         NgMap.event.addListenerOnce(map, 'idle', function() {
@@ -74,53 +74,54 @@ angular.module('MealsCtrls', ['MealsServices', 'ngMap', 'ui.bootstrap']).control
         });
         mealType(filteredMeals);
     };
+    // user get for favorites functions and favorites page
     if ($scope.auth.currentUser()) {
         User.get({
-        id: $scope.auth.currentUser().id
-    }, function success(data) {
-        $scope.user = data;
-        console.log("This user is " + $scope.user);
-        // favorite add function
-        $scope.addToFavorites = function(index, whichMeal) {
-            var meal = $scope[whichMeal][index];
-            var favoritesObj = {
-                program: meal.name_of_program,
-                location: meal.location,
-                time: meal.day_time,
-                meal: meal.meal_served,
-                served: meal.people_served
+            id: $scope.auth.currentUser().id
+        }, function success(data) {
+            $scope.user = data;
+            console.log("This user is " + $scope.user);
+            // favorite add function
+            $scope.addToFavorites = function(index, whichMeal) {
+                var meal = $scope[whichMeal][index];
+                var favoritesObj = {
+                    program: meal.name_of_program,
+                    location: meal.location,
+                    time: meal.day_time,
+                    meal: meal.meal_served,
+                    served: meal.people_served
+                };
+                console.log(favoritesObj);
+                Favorites.saveFavorites({
+                    id: $scope.user.id
+                }, favoritesObj, function success(data) {
+                    console.log(data);
+                    $scope.user.favorites.push(favoritesObj);
+                }, function error(data) {
+                    console.log(data);
+                });
+                console.log($scope.user);
             };
-            console.log(favoritesObj);
-            Favorites.saveFavorites({
-                id: $scope.user.id
-            }, favoritesObj, function success(data) {
-                console.log(data);
-                $scope.user.favorites.push(favoritesObj);
-            }, function error(data) {
-                console.log(data);
-            });
-            console.log($scope.user);
-        };
-        // favorite delete function
-        $scope.removeFromFavorites = function(index) {
-            var indexA = index;
-            Favorites.removeFavorites({
-                idx: indexA,
-                id: $scope.user.id
-            }, indexA, function success(data) {
-                console.log(data);
-                $scope.user.favorites.splice(indexA, 1);
-            }, function error(data) {
-                console.log(data);
-            });
-        };
-    }, function error(data) {
-        console.log(data);
-    });
+            // favorite delete function
+            $scope.removeFromFavorites = function(index) {
+                var indexA = index;
+                Favorites.removeFavorites({
+                    idx: indexA,
+                    id: $scope.user.id
+                }, indexA, function success(data) {
+                    console.log(data);
+                    $scope.user.favorites.splice(indexA, 1);
+                }, function error(data) {
+                    console.log(data);
+                });
+            };
+        }, function error(data) {
+            console.log(data);
+        });
     }
+    // checks to see if a meal has been favorited for show/hide functions
     $scope.isAFavorite = function(index, whichMeal) {
-        console.log('user', $scope.user);
-        if($scope.user) {
+        if ($scope.user) {
             var meal = $scope[whichMeal][index];
             for (var i = 0; i < $scope.user.favorites.length; i++) {
                 if ($scope.user.favorites[i].program == meal.name_of_program && $scope.user.favorites[i].time == meal.day_time) {
@@ -132,7 +133,6 @@ angular.module('MealsCtrls', ['MealsServices', 'ngMap', 'ui.bootstrap']).control
             return false;
         }
     };
-    
 }]).controller('NavCtrl', ['$scope', "Auth", "$location", function($scope, Auth, $location) {
     // ***********************************************************************
     // manages functions on the navigation bar, including the log out function
@@ -162,7 +162,6 @@ angular.module('MealsCtrls', ['MealsServices', 'ngMap', 'ui.bootstrap']).control
             });
         };
     }
-
 ]).controller("SignupCtrl", ["$scope", "$http", "$location", "Auth",
     // *********************************************************
     // controller handling when a new user signs up for the site

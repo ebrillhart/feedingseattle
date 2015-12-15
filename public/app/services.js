@@ -34,7 +34,6 @@ angular.module('MealsServices', ['ngResource', 'ngMap']).factory('Meal', ['$reso
 	        var token = this.getToken();
 	        try {
 	          var payload = JSON.parse($window.atob(token.split('.')[1]));
-	          console.log(payload);
 	          	return payload;
 	        } catch(err) {
 	          	return false;

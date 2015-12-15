@@ -12,7 +12,7 @@ body {
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
-    font-family: 'IM Fell French Canon', serif;
+    font-family: Raleway, sans-serif;
 }
 
 .navbar-default {
@@ -73,6 +73,7 @@ body {
 
 .titleSmall small {
     color: #6E6E6E;
+    font-weight: bold;
 }
 
 
