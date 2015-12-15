@@ -10,7 +10,7 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
         controller: 'MealCtrl'
     }).when("/user/:id/profile", {
         templateUrl: "app/views/favorites.html",
-        controller: 'MealCtrl'
+        controller: 'UserCtrl'
     }).when('/login', {
         templateUrl: 'app/views/userLogin.html',
         controller: 'LoginCtrl'
