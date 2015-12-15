@@ -12,7 +12,7 @@ angular.module('MealsServices', ['ngResource', 'ngMap']).factory('Meal', ['$reso
 }])
 .factory("User", ["$resource", "Auth", function($resource, Auth) {
 	var token = Auth.getToken();
-	return $resource('http://localhost:3000/api/users/:id', {}, {
+	return $resource('https://feedingseattle.herokuapp.com/api/users/:id', {}, {
 		headers: {'Authorization' : 'Bearer ' + token}
 	});
 }])
