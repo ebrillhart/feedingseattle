@@ -142,7 +142,7 @@ body {
     font-size: 2rem;
 }
 
-.jumpButton, .filterButton, .faveButton, .jumpButton:hover, .filterButton:hover, .faveButton:hover, .jumpButton:visited, .filterButton:visited, .faveButton:visited {
+.jumpButton, .filterButton, .faveButton, .jumpButton:hover, .filterButton:hover, .faveButton:hover, .jumpButton:visited, .filterButton:visited, .faveButton:visited, .jumpButton:active, .filterButton:active, .faveButton:active {
     background-color: #232323;
     border-radius: 2px;
     border-color: #232323;

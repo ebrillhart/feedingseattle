@@ -72,22 +72,8 @@ angular.module('MealsCtrls', ['MealsServices', 'ngMap', 'ui.bootstrap']).control
         });
         mealType(filteredMeals);
     };
-}]).controller('NavCtrl', ['$scope', "Auth", "$location", function($scope, Auth, $location) {
-    // ***********************************************************************
-    // manages functions on the navigation bar, including the log out function
-    // *********************************************************************** 
-    $scope.logout = function() {
-        Auth.removeToken();
-        $location.path("/");
-    };
-}]).controller('UserCtrl', ["$scope", "Auth", "User", "Favorites", "Meal", function($scope, Auth, User, Favorites, Meal) {
-    // ****************************************************************
-    // manages functions on the favorites page and buttons on list page
-    // ****************************************************************
-    console.log("I'M ON THE USER CONTROLLER");
-    $scope.user;
-    console.log($scope.currentUser);
-    User.get({
+    if ($scope.currentUser) {
+        User.get({
         id: $scope.currentUser.id
     }, function success(data) {
         $scope.user = data;
@@ -126,8 +112,12 @@ angular.module('MealsCtrls', ['MealsServices', 'ngMap', 'ui.bootstrap']).control
                 console.log(data);
             });
         };
-        // check to see if meal is already on favorites list
-        $scope.isAFavorite = function(index, whichMeal) {
+    }, function error(data) {
+        console.log(data);
+    });
+
+    $scope.isAFavorite = function(index, whichMeal) {
+        $scope.user = $scope.currentUser;
         var meal = $scope[whichMeal][index];
         var found = false;
         for (var i = 0; i < $scope.user.favorites.length; i++) {
@@ -138,22 +128,16 @@ angular.module('MealsCtrls', ['MealsServices', 'ngMap', 'ui.bootstrap']).control
             }
         }
     };
-    }, function error(data) {
-        console.log(data);
-    });
-
-    // $scope.isAFavorite = function(index, whichMeal) {
-    //     $scope.user = $scope.currentUser;
-    //     var meal = $scope[whichMeal][index];
-    //     var found = false;
-    //     for (var i = 0; i < $scope.user.favorites.length; i++) {
-    //         if ($scope.user.favorites[i].program == meal.name_of_program && $scope.user.favorites[i].time == meal.day_time) {
-    //             found = true;
-    //             return true;
-    //             break;
-    //         }
-    //     }
-    // };
+    }
+    
+}]).controller('NavCtrl', ['$scope', "Auth", "$location", function($scope, Auth, $location) {
+    // ***********************************************************************
+    // manages functions on the navigation bar, including the log out function
+    // *********************************************************************** 
+    $scope.logout = function() {
+        Auth.removeToken();
+        $location.path("/");
+    };
 }]).controller("LoginCtrl", ["$scope", "$http", "$location", "Auth",
     // *************************************************************
     // controller handling when an existing user logs in to the site

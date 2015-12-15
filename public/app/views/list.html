@@ -159,7 +159,7 @@
 	    <div class="col-md-6">
 	    	<h5>{{meal.day_time}}</h5>
 	        <h5>{{meal.location}}, WA</h5>
-	        <form  method="POST" role="form" ng-submit='addToFavorites($index, "otherMeals")'>
+	        <form method="POST" role="form" ng-submit='addToFavorites($index, "otherMeals")'>
 					<div class="form-group" hidden>
 						<input type="text" class="form-control" ng-model="program" value="{{ meal.name_of_program }}" hidden>
 					</div>
@@ -175,9 +175,9 @@
 					<div class="form-group" hidden>
 						<input type="text" class="form-control" ng-model='served' value="{{ meal.people_served }}" hidden>
 					</div>
-						<button type="submit" ng-controller="UserCtrl" class="btn faveButton" ng-show="isLoggedIn()" ng-hide="isAFavorite($index, 'otherMeals')">Add to Favorites</button>
+						<button ng-show="isLoggedIn()" type="submit" class="btn faveButton">Add to Favorites</button>
 				</form>
-				<button type="submit" ng-controller="UserCtrl" class="btn seeFavesButton" ng-show="isAFavorite($index, 'otherMeals')"><a href="/user/{{ currentUser.id }}/profile">See Favorites</a></button>
+				<button type="submit" class="btn seeFavesButton" ng-show="isAFavorite($index, 'otherMeals')"><a href="/user/{{ currentUser.id }}/profile">See Favorites</a></button>
 	    </div>
 	    <!-- location map -->
 	    <div class="col-md-6">
