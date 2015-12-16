@@ -8,7 +8,7 @@ Uses Socrata Open Data to display a list and map of meal programs for homeless a
 
 ####Database Model
 
-'''
+```javascript
 var UserSchema = mongoose.Schema({
   username: {
     type: String,
@@ -29,7 +29,7 @@ var UserSchema = mongoose.Schema({
     }
   ]
 });
-'''
+```
 
 ####Wireframes
 
