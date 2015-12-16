@@ -1,5 +1,5 @@
 # Feeding Seattle
-Uses Socrata Open Data to display a list and map of meal programs for homeless and low-income individuals. Registered users can create a list of saved/favorite programs. 
+Uses Socrata Open Data to display a list of meal programs for homeless and low-income individuals. Registered users can create a list of saved/favorite programs. 
 
 ![Image of Screenshot](public/app/images/screenshot.png)
 
