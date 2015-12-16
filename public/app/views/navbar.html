@@ -15,9 +15,12 @@
     <ul class="nav navbar-nav navbar-right">
       <li><a href="/about">About</a></li>
       <li><a href="/list">Meals</a></li>
+      <!-- only shows when user is logged in -->
       <li><a href="/user/{{ auth.currentUser().id }}/profile" ng-show="auth.isLoggedIn()">Favorites</a></li>
+      <!-- below two only show when no user is logged in -->
       <li><a href="/signup" ng-hide="auth.isLoggedIn()">Signup</a></li>
       <li><a href="/login" ng-hide="auth.isLoggedIn()">Login</a></li>
+      <!-- only shows when user is logged in -->
       <li><a ng-click="logout()" ng-show="auth.isLoggedIn()" id="logoutLink">Logout</a></li>
     </ul>
   </div><!-- /.navbar-collapse -->

@@ -1,7 +1,7 @@
 var express = require('express');
 var User = require('../models/user');
 var router = express.Router();
-
+// route for /users
 router.route('/')
   .get(function(req, res) {
     User.find(function(err, users) {
@@ -16,6 +16,7 @@ router.route('/')
     });
   });
 
+// route for users/:id
 router.route('/:id')
   .get(function(req, res) {
     User.findById(req.params.id, function(err, user) {
@@ -33,6 +34,7 @@ router.route('/:id')
     // exists so that other things work
   });
 
+// route for users/:id/favorites
  router.route('/:id/favorites')
   .get(function(req, res) {
     User.findById(req.params.id, function(err, user) {
@@ -53,6 +55,7 @@ router.route('/:id')
     });
   });
 
+  // root for users/:id/favorites/:idx
   router.route('/:id/favorites/:idx')
   .get(function(req, res) {
     User.findById(req.params.id, function(err, user) {

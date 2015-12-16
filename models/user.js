@@ -22,6 +22,7 @@ var UserSchema = mongoose.Schema({
   ]
 });
 
+// what's viewable in the JSON object for the user
 UserSchema.set('toJSON', {
   transform: function(doc, ret, options) {
     var returnJson = {
