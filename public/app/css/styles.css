@@ -216,7 +216,7 @@ body {
 }
 
 #aboutDiv {
-    background-color: rgba(201, 201, 201, 0.5);
+    background-color: rgba(201, 201, 201, 0.6);
     padding: 5%;
     margin-bottom: 5%;
     border-radius: 2px;
@@ -236,6 +236,10 @@ a, a:hover {
 
 .aboutText {
     font-size: 1.6rem;
+}
+
+#contactList {
+	list-style: none;
 }
 
 
