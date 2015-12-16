@@ -1,6 +1,8 @@
 # Feeding Seattle
 Uses Socrata Open Data to display a list and map of meal programs for homeless and low-income individuals. Registered users can create a list of saved/favorite programs. 
 
+![Image of Screenshot](public/app/images/screenshot.png)
+
 ####How-To/About from Site
 You can view meal information without being a registered user, but you need to register in order to create a printable list of favorites. To register, simply sign up with a username and password that you'll be able to remember. You can filter meals by those that are open to everyone or those restricted by demographic. Just click the button in the meal's drop-down panel to add it to your favorites list.
 
@@ -37,6 +39,10 @@ var UserSchema = mongoose.Schema({
 ```
 
 ####Wireframes
+* Splash page: https://drive.google.com/file/d/0BwTLtk98IjeBV1IyYWxXRVhTcGc/view?usp=sharing
+* About page: https://drive.google.com/file/d/0BwTLtk98IjeBdEFqSmswU2V1OFk/view?usp=sharing
+* Meals page: https://drive.google.com/file/d/0BwTLtk98IjeBaFUyVnc2enNCVWs/view?usp=sharing
+* Favorites page: https://drive.google.com/file/d/0BwTLtk98IjeBMGpVbjdCdkprbEk/view?usp=sharing
 
 ####Highlights
 * Registered users can add and remove favorites from a personal page
