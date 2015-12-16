@@ -7,9 +7,16 @@ Uses Socrata Open Data to display a list and map of meal programs for homeless a
 * User Story 3: This user wants to help volunteer for or donate money to a meal program in Seattle. She can find ones near her and/or during times that she is free and then use the contact info on the about page to reach out about volunteering, or simply donate to the program if she'd prefer to help them monetarily. 
 
 ####Database Model
-var UserSchema = mongoose.Schema({
-  username: String,
-  password: String,
+'var UserSchema = mongoose.Schema({
+  username: {
+    type: String,
+    required: true,
+    unique: true
+  },
+  password: {
+    type: String,
+    required: true
+  },
   favorites: [
     {
       program: String,
@@ -19,7 +26,7 @@ var UserSchema = mongoose.Schema({
       served: String
     }
   ]
-});
+});'
 
 ####Wireframes
 
@@ -49,3 +56,4 @@ var UserSchema = mongoose.Schema({
 * Some of the markers for the venue locations don't show up on the Google maps, and I'm not sure why. The maps also don't always render beyond a grey box, and will only center on the correct location sometimes. I think some of this has to do with the Angular plug-in I used, and were I to do the project over, I would use a different plug-in. 
 * Had to work around the XHTTP header being sent when a user was logged in to be able to access the data from the Socrata API endpoint. Originally, the data would only display if the user was logged out.
 * I had really wanted to have a map page that showed all of the locations together, but had a lot of issues with making sure that all of the markers showed up and using an ng-repeat on pop-ups that would appear with info when a marker was clicked. Going back to my first challenge with the maps, I think that a different plug-in might be the key.
+* Working on adding flash messages if a username is taken for a new user (currently will simply not allow the user to be created) or if the password and username don't match for a returning user.
