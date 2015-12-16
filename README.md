@@ -7,6 +7,7 @@ Uses Socrata Open Data to display a list and map of meal programs for homeless a
 * User Story 3: This user wants to help volunteer for or donate money to a meal program in Seattle. She can find ones near her and/or during times that she is free and then use the contact info on the about page to reach out about volunteering, or simply donate to the program if she'd prefer to help them monetarily. 
 
 ####Database Model
+
 '''
 var UserSchema = mongoose.Schema({
   username: {
