@@ -459,14 +459,14 @@ body {
     background-color: #EBEBEB;
 }
 
-.jumpButton, .filterButton, .faveButton, .jumpButton:hover, .filterButton:hover, .faveButton:hover, .jumpButton:visited, .filterButton:visited, .faveButton:visited, .jumpButton:active, .filterButton:active, .faveButton:active {
+.jumpButton, .filterButton, .faveButton, .jumpButton:hover, .filterButton:hover, .faveButton:hover, .jumpButton:visited, .filterButton:visited, .faveButton:visited, .jumpButton:active, .filterButton:active, .faveButton:active, .jumpButton:active:focus, .filterButton:active:focus, .faveButton:active:focus {
     background-color: #232323;
     border-radius: 2px;
     border-color: #232323;
     color: #C9C9C9;
 }
 
-.seeFavesButton, .seeFavesButton a, .seeFavesButton a:hover, .seeFavesButton a:active, .seeFavesButton a:visited {
+.seeFavesButton, .seeFavesButton a, .seeFavesButton a:hover, .seeFavesButton a:active, .seeFavesButton a:visited, .seeFavesButton a:active:focus {
     background-color: #1A3C6A;
     border-color: #1A3C6A;
     border-radius: 2px;
