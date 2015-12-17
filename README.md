@@ -13,6 +13,9 @@ In order to make this site as useful as possible for the people it aims to serve
 * jsonwebtoken
 * mongoose
 
+#####Bower Components
+* ngmap
+
 ####How-To/About from Site
 You can view meal information without being a registered user, but you need to register in order to create a printable list of favorites. To register, simply sign up with a username and password that you'll be able to remember. You can filter meals by those that are open to everyone or those restricted by demographic. Just click the button in the meal's drop-down panel to add it to your favorites list.
 
