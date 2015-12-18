@@ -7,9 +7,7 @@ angular.module('MealsCtrls', ['MealsServices', 'ngMap', 'ui.bootstrap']).control
     $scope.user = $scope.auth.currentUser();
     // initializing map with NgMap
     NgMap.getMap().then(function(map) {
-        map.event.addListenerOnce(map, 'idle', function() {
-            map.event.trigger(map, 'resize');
-        });
+        setTimeout(google.maps.event.trigger, 500, map, 'resize');
     });
     // function to be used as callback - filters meals into meal arrays
     var mealType = function(arr) {
