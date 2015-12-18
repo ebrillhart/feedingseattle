@@ -6,7 +6,7 @@
 
 /****************************************************/
 
-@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+@media only screen and (min-device-width: 320px) and (max-device-width: 550px) {
     .navbar-default {
         padding: 3%;
     }
@@ -202,7 +202,7 @@
 
 /************************************/
 
-@media only screen and (min-width: 1224px) {
+@media only screen and (min-width: 1000px) {
     .navbar-default {
         padding: 1%;
     }
